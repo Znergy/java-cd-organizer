@@ -1,9 +1,29 @@
 <!-- Index.vtl -->
 <h1>CD Organizer</h1>
 <p>Let's order some damn CD's!</p>
-<form action="/organize" method="post">
-  <label for=""></label>
-  <input type="text" name="">
-  <button type="submit"></button>
+
+#if ($cds)
+  <h3>Here are your CD's</h3>
+  <ul>
+    #foreach ($cd in $cds)
+      <li>$cd.getArtist()</li>
+      <li>$cd.getTitle()</li>
+      <li>$cd.getPrice()</li>
+    #end
+  <ul>
+#else
+  <p>
+    No Cd's yet Bro!
+  </p>
+#end
+
+<form action="/result" method="post">
+  <label for="artist">Enter an Artist</label>
+  <input type="text" name="artist">
+  <label for="title">Enter a Title</label>
+  <input type="text" name="title">
+  <label for="price">Enter a Price</label>
+  <input type="number" name="price">
+  <button type="submit">Add CD</button>
 </form>
 <!-- Index.vtl -->
